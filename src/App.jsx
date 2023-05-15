@@ -1,12 +1,17 @@
 
 function App() {
- 
   return (
     <>
-    <h1 className=" text-red-400 text-2xl"> Hello Holidaze</h1>
-    
-  </>
+    <div>
+    <div>SIde menu</div>
+    <div> Holidaze</div>
+    </div>
+   
+
+
+    </>
   )
+  
 }
 
-export default App
+export default App;

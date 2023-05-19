@@ -1,14 +1,18 @@
 
+import Navigation from './shared/Navigation';
+
 function App() {
+ 
   return (
     <>
-    <div>
-    <div>SIde menu</div>
-    <div> Holidaze</div>
+    <div className=" flex">
+      <Navigation/>
+      
+    <div className=" p-4"> 
+    <h1 className=" text-2xl">Holidaze</h1>
+    </div>
     </div>
    
-
-
     </>
   )
   

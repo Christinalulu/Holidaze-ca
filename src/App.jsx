@@ -1,21 +1,18 @@
-
-import Navigation from './shared/Navigation';
-
+import HomePage from "./components/pages/HomePage";
+import Navigation from "./components/shared/Navigation";
+import Landing from "./components/pages/Landing";
 function App() {
  
   return (
     <>
-    <div className=" flex">
-      <Navigation/>
-      
-    <div className=" p-4"> 
-    <h1 className=" text-2xl">Holidaze</h1>
-    </div>
-    </div>
+    <Navigation/>
+    <Landing/>
+    <HomePage/>
+
+ 
    
     </>
-  )
-  
+  );
 }
 
 export default App;

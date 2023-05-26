@@ -1,18 +1,13 @@
-import HomePage from "./components/pages/HomePage";
-import Navigation from "./components/shared/Navigation";
-import Landing from "./components/pages/Landing";
-function App() {
- 
-  return (
-    <>
-    <Navigation/>
-    <Landing/>
-    <HomePage/>
+import Router from "./routes/Router";
 
- 
-   
-    </>
-  );
+
+function App() {
+	return (
+    <>
+	 <Router/>
+	 </>
+
+	);
 }
 
 export default App;

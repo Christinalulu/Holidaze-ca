@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/modules/venueSlice";
-
+import { Link } from "react-router-dom";
 
 
 function HomePage() {
@@ -23,13 +23,16 @@ function HomePage() {
              {products.map((product) => (
                <div key={product.id}>
                  <div className="group relative flex flex-col overflow-hidden rounded-sm border border-gray-200 bg-white">
-                   <div className="aspect-h-2 aspect-w-2 bg-gray-200 sm:aspect-none group-hover:opacity-75 lg:h-60">
+                  <Link to={'product/${product.id}'}>
+                  <div className="aspect-h-2 aspect-w-2 bg-gray-200 sm:aspect-none group-hover:opacity-75 lg:h-60">
                      <img
                        src={product.media[0]}
                        alt="a place to stay"
                        className="h-full w-full object-cover object-center sm:h-full sm:w-full"
                      />
                    </div>
+                  </Link>
+              
                    <div className="flex flex-1 flex-col space-y-2 p-4">
                      <h3 className="text-sm font-medium text-gray-900">
                        {product.name}

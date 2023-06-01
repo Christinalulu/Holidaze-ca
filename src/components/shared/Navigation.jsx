@@ -1,27 +1,30 @@
-
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
+// import { getUsername } from "../../store/storage";
 
 import { IoBedOutline } from "react-icons/io5";
 import { BiSearch } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
-import {IoExitOutline} from "react-icons/io5";
-import {AiOutlineUser,AiOutlineSetting } from "react-icons/ai";
+import { IoExitOutline } from "react-icons/io5";
+import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
 
 const Navigation = () => {
 	const [open, setOpen] = useState(true);
-
+	const [isLoggedIn, isLoggedOut] = useState(false);
+	// const user = getUsername();
+	// const {name} = user;
+	
 	const itemsMenu = [
-		{ name: "Home", href: "/home" },
-		{ name: "Venues", href: `/product/id:` },
-		{ name: "About", href: "/about" },
-		{ name: "Dashboard", href: "/profile" },
+		{ name: "Home", href: "/" },
+		{ name: "Venues", href: `/home` },
+		{ name: "About", href: "/product/id:" },
+		{ name: "Dashboard", href: "/dashboard" },
 	];
 
 	const profileUser = [
-		{ name: "Your Profile", icon: <AiOutlineUser/>  },
-		{ name: "Settings", icon: <AiOutlineSetting/> },
-		{ name: "Sign Out", icon: <IoExitOutline/>  },
+		{ name: "Your Profile", icon: <AiOutlineUser /> },
+		{ name: "Settings", icon: <AiOutlineSetting /> },
+		{ name: "Sign Out", icon: <IoExitOutline /> },
 	];
 
 	return (
@@ -86,7 +89,10 @@ const Navigation = () => {
 								aria-controls='mobile-menu'
 								aria-expanded='false'>
 								<span className='sr-only'>Open main menu</span>
-								<FiMenu name={open ? "close" : "menu-outline"} className='block h-6 w-6' />
+								<FiMenu
+									name={open ? "close" : "menu-outline"}
+									className='block h-6 w-6'
+								/>
 							</button>
 						</div>
 
@@ -101,19 +107,33 @@ const Navigation = () => {
 										aria-expanded='false'
 										aria-haspopup='true'>
 										<span className='sr-only'>Go to profile menu</span>
+										<NavLink
+											className='text-purple-600 text-base mr-4'
+											to='/signup'>
+											Sign up
+										</NavLink>
 										<img
-											className='h-8 w-8 rounded-full'
+											className='h-8 w-8 rounded-full hidden'
 											src='https://akhbarelmi.ir/media/covers/175146.jpg'
 											alt='avatar'
 										/>
 									</button>
 								</div>
 							</div>
-							<span className="flex ml-4 text-sm items-center text-purple-600 cursor-pointer">Sign out<IoExitOutline className="ml-2 h-4 w-4"/></span>
+							<span className=' hidden ml-4 text-base items-center text-purple-600 cursor-pointer'>
+								<IoExitOutline className='ml-2 h-4 w-4' />
+								Sign out
+							</span>
+
+							<NavLink className='text-purple-600 text-base' to='/login'>{isLoggedIn ? "Login" && isLoggedOut: 'Sign out'}
+							</NavLink>
+							 
 						</div>
 					</div>
 				</div>
-				<div id='mobile-menu' className={`${open ? "block" : "hidden"} lg:hidden`}>
+				<div
+					id='mobile-menu'
+					className={`${open ? "block" : "hidden"} lg:hidden`}>
 					<div className='space-y-1 pb-3 pt-2'>
 						{itemsMenu.map((menu, index) => (
 							<>
@@ -129,7 +149,6 @@ const Navigation = () => {
 										);
 									}}>
 									{menu.name}
-									
 								</NavLink>
 							</>
 						))}
@@ -138,7 +157,7 @@ const Navigation = () => {
 						<div className='flex items-center px-4'>
 							<div className='flex-shrink-0'>
 								<img
-									className='h-10 w-10 rounded-full'
+									className='h-10 w-10 rounded-full '
 									src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
 									alt='avatar'
 								/>
@@ -156,9 +175,9 @@ const Navigation = () => {
 										to={menu.href}
 										className='block px-4 py-2 text-base font-medium text-black hover:bg-purple-50 hover:text-purple-600'>
 										{menu.name}
-										<span className="text-2xl block float-left mr-2">
-										{menu.icon ? menu.icon : <AiOutlineUser/>}
-									</span>
+										<span className='text-2xl block float-left mr-2'>
+											{menu.icon ? menu.icon : <AiOutlineUser />}
+										</span>
 									</NavLink>
 								</>
 							))}

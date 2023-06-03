@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Landing from "../components/pages/Landing";
-import Home from "../components/pages/Home";
+import Venues from "../components/pages/Venues";
 import Details from "../components/pages/Details";
 import Signup from "../components/pages/Signup";
 import Dashboard from "../components/pages/Dashboard";
@@ -13,15 +13,15 @@ function Router() {
 		
 				<Routes>
 					<Route
-						path='/'
+						path='/home'
 						element={<Landing />}
 					/>
 					<Route
-						path='/home'
-						element={<Home />}
+						path='/venues'
+						element={<Venues />}
 					/>
 					<Route
-						path='/product/:id'
+						path='/venue/:id'
 						element={<Details />}
 					/>
 					

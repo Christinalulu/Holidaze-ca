@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 const Landing = () => {
 	return (
 		<div>
@@ -9,22 +9,17 @@ const Landing = () => {
 							<h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
 								Holidaze
 							</h2>
-							<p className='mt-6 text-xl leading-8 text-gray-600'>
-								Quasi est quaerat. Sit molestiae et. Provident ad dolorem occaecati eos
-								iste. Soluta rerum quidem minus ut molestiae velit error quod. Excepturi
-								quidem expedita molestias quas.
+							<p className='mt-12 text-xl leading-8 text-gray-600'>
+								Welcome to Holidaze, your gateway to unforgettable experiences! Discover
+								and book your dream accommodations effortlessly.
 							</p>
-							<p className='mt-6 text-base leading-7 text-gray-600'>
-								Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-								cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat. Quasi
-								aperiam sit non sit neque reprehenderit.
-							</p>
+
 							<div className='mt-10 flex'>
-								<a
+								<Link to="/venues"
 									href='#'
 									className='rounded-md bg-purple-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
 									Find your place <span aria-hidden='true'>&rarr;</span>
-								</a>
+								</Link>
 							</div>
 						</div>
 
@@ -37,7 +32,7 @@ const Landing = () => {
 								/>
 							</div>
 							<div className='contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8'>
-								<div  className='order-first flex w-64 flex-none justify-end self-end lg:w-auto'>
+								<div className='order-first flex w-64 flex-none justify-end self-end lg:w-auto'>
 									<img
 										src='./images/image02.jpg'
 										alt=''
@@ -51,15 +46,27 @@ const Landing = () => {
 										className='aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover'
 									/>
 								</div>
-								<div className='hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none'>
-									<img
-										src='./images/image01.jpg'
-										alt=''
-										className='aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover'
-									/>
-								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class='bg-gradient-to-r from-white via-purple-200 to-pink-200 shadow py-24 sm:py-32'>
+				<div class='mx-auto max-w-7xl px-6 lg:px-8'>
+					<div class='mx-auto max-w-2xl lg:mx-0'>
+						<Link to="/signup" class='text-base font-semibold leading-7 text-purple-600 hover:underline'>
+						Click here
+						</Link>
+						<h2 class='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
+						Join our community
+						</h2>
+						<p class='mt-6 text-lg leading-8 text-gray-600'>
+						while also unlocking
+								the opportunity to become a host and create your own remarkable venues.
+								Join our vibrant community and embark on a journey of endless
+								possibilities.
+						</p>
 					</div>
 				</div>
 			</div>

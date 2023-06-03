@@ -15,10 +15,10 @@ const Navigation = () => {
 	// const {name} = user;
 	
 	const itemsMenu = [
-		{ name: "Home", href: "/" },
-		{ name: "Venues", href: `/home` },
-		{ name: "About", href: "/product/id:" },
-		{ name: "Dashboard", href: "/dashboard" },
+		{ name: "Home", href: '/home' },
+		{ name: "Venues", href: '/venues' },
+		{ name: "Details", href: `/venue/${id}`},
+		{ name: "Dashboard", href: '/dashboard' },
 	];
 
 	const profileUser = [
@@ -33,12 +33,19 @@ const Navigation = () => {
 				<div className='mx-auto max-w-7xl px-2 sm:px-4 lg:px-8'>
 					<div className='flex h-16 justify-between'>
 						<div className='flex px-2 lg:px-0'>
+						
 							<div className='flex flex-shrink-0 items-center'>
+								<NavLink to="/home">
 								<IoBedOutline className='block h-8 w-auto text-purple-600' />
 								<h1 className='hidden text-purple-600 text-lg ml-2 md:block'>
 									Holidaze
 								</h1>
+								</NavLink>
+							
+								
+								
 							</div>
+							
 							<div className='hidden lg:ml-6 lg:flex lg:space-x-8'>
 								{itemsMenu.map((menu, index) => (
 									<>
@@ -125,7 +132,7 @@ const Navigation = () => {
 								Sign out
 							</span>
 
-							<NavLink className='text-purple-600 text-base' to='/login'>{isLoggedIn ? "Login" && isLoggedOut: 'Sign out'}
+							<NavLink className='text-purple-600 text-base' to='/login'>Login
 							</NavLink>
 							 
 						</div>

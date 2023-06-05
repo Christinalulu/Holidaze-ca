@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import Landing from "../components/pages/Landing";
+import Home from "../components/pages/Home";
 import Venues from "../components/pages/Venues";
 import Details from "../components/pages/Details";
-import Signup from "../components/pages/Signup";
-import Dashboard from "../components/pages/Dashboard";
-import Login from "../components/pages/Login";
-
+import Dashboard from "../components/pages/Dashboard"
+import Signup from "../components/pages/Signup"
+import Login from "../components/pages/Login"
+import Checkout from "../components/pages/Checkout"
 
 function Router() {
 	return (
@@ -13,20 +13,19 @@ function Router() {
 		
 				<Routes>
 					<Route
-						path='/home'
-						element={<Landing />}
+						path='/'
+						element={<Home />}
 					/>
 					<Route
 						path='/venues'
 						element={<Venues />}
 					/>
 					<Route
-						path='/venue/:id'
+						path='/details/:id'
 						element={<Details />}
 					/>
-					
 					<Route
-						path='/dashboard'
+						path='/dashborad'
 						element={<Dashboard />}
 					/>
 					<Route
@@ -35,8 +34,13 @@ function Router() {
 					/>
 					<Route
 						path='/login'
-						element={<Login />}
+						element={<Login/>}
 					/>
+					<Route
+						path='/checkout'
+						element={<Checkout/>}
+					/>
+				
 				</Routes>
 			
 		</>

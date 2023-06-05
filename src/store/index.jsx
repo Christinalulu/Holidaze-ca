@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
 import venueSlice from "./modules/venueSlice";
+import addToCheckout from "./modules/addToCheckout";
 
 
 const reducer = combineReducers({
-   // I will list my modules
-   venueSlice
-
+// here i will defind my slices
+venueSlice,
+addToCheckout
 });
 
 const index = configureStore ({

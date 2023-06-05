@@ -6,5 +6,11 @@ The customer-facing side enables users to browse and book holidays at various ve
 
 Link: https://fascinating-swan-930562.netlify.app
 
+## Setup 
+to run the project 
+$ yarn install
+$ yarn dev - to run the project
+
+
 
 

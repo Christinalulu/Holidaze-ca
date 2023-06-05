@@ -4,11 +4,15 @@ const venueSlice = createSlice({
 	name: "venueSlice",
 	initialState: {
 		product: [],
+		singleProduct: null
 	},
 	reducers: {
 		SET_VENUES: (state, action) => {
 			state.product = action.payload;
 		},
+		SET_SINGLE_PRODUCT:(state,action) => {
+			state.singleProduct = action.payload;
+		}
 	},
 });
 
@@ -32,8 +36,22 @@ export const fetchProducts = () => async (dispatch) => {
 	}
 };
 
+// https://nf-api.onrender.com/api/v1/holidaze/venues/${id}
 
+const {SET_SINGLE_PRODUCT} = venueSlice.actions;
+export const fetchSingleProductById = (id) => async (dispatch) =>{
 
+	try{
+		const respone = await 
+		fetch(`https://nf-api.onrender.com/api/v1/holidaze/venues/${id}`);
+		const productData = await respone.json();
+		dispatch(SET_SINGLE_PRODUCT(productData))
+		console.log({respone});
+
+	}catch(e){
+		console.log(e);
+	}
+}
 
 
 

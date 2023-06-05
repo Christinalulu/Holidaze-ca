@@ -1,6 +1,5 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
-// import { getUsername } from "../../store/storage";
 
 import { IoBedOutline } from "react-icons/io5";
 import { BiSearch } from "react-icons/bi";
@@ -10,16 +9,29 @@ import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
 
 const Navigation = () => {
 	const [open, setOpen] = useState(true);
-	const [isLoggedIn, isLoggedOut] = useState(false);
-	// const user = getUsername();
-	// const {name} = user;
-	
+
 	const itemsMenu = [
-		{ name: "Home", href: '/home' },
-		{ name: "Venues", href: '/venues' },
-		{ name: "Details", href: `/venue/${id}`},
-		{ name: "Dashboard", href: '/dashboard' },
+		{  name: "Home", href: "/" },
+		{  name: "Venues", href: "/venues" },
+		{  name: "Details", href: "/details/:id" },
+		{  name: "Dashboard", href: "/dashborad" },
+		{  name: "Checkout", href: "/checkout" },
 	];
+	
+	// const desktopNavigation = itemsMenu.map((item) => (
+	// 	<ItemsMenu
+	// 		key={`desktop_${item.id}`}
+	// 		label={item.label}
+	// 		url={item.url}
+	// 	/>
+	// ));
+	// const mobileNavigation = itemsMenu.map((item) => (
+	// 	<ItemsMenu
+	// 		key={`mobile_${item.id}`}
+	// 		label={item.label}
+	// 		url={item.url}
+	// 	/>
+	// ));
 
 	const profileUser = [
 		{ name: "Your Profile", icon: <AiOutlineUser /> },
@@ -33,24 +45,20 @@ const Navigation = () => {
 				<div className='mx-auto max-w-7xl px-2 sm:px-4 lg:px-8'>
 					<div className='flex h-16 justify-between'>
 						<div className='flex px-2 lg:px-0'>
-						
-							<div className='flex flex-shrink-0 items-center'>
-								<NavLink to="/home">
-								<IoBedOutline className='block h-8 w-auto text-purple-600' />
+							<NavLink
+								className='flex flex-shrink-0 items-center'
+								to='/'>
+								<IoBedOutline className='flex h-8 w-auto text-purple-600' />
 								<h1 className='hidden text-purple-600 text-lg ml-2 md:block'>
 									Holidaze
 								</h1>
-								</NavLink>
-							
-								
-								
-							</div>
-							
+							</NavLink>
+
 							<div className='hidden lg:ml-6 lg:flex lg:space-x-8'>
 								{itemsMenu.map((menu, index) => (
 									<>
 										<NavLink
-											key={index}
+											key={index.id}
 											to={menu.href}
 											className={({ isActive }) => {
 												return (
@@ -88,7 +96,6 @@ const Navigation = () => {
 							</div>
 						</div>
 						<div className='flex items-center lg:hidden'>
-							{/* <!-- Mobile menu button --> */}
 							<button
 								type='button'
 								onClick={() => setOpen(!open)}
@@ -103,7 +110,6 @@ const Navigation = () => {
 							</button>
 						</div>
 
-						{/* <!-- Profile button --> */}
 						<div className='hidden lg:ml-4 lg:flex lg:items-center'>
 							<div className=' relative ml-4 flex-shrink-0'>
 								<div>
@@ -132,9 +138,11 @@ const Navigation = () => {
 								Sign out
 							</span>
 
-							<NavLink className='text-purple-600 text-base' to='/login'>Login
+							<NavLink
+								className='text-purple-600 text-base'
+								to='/login'>
+								Login
 							</NavLink>
-							 
 						</div>
 					</div>
 				</div>
@@ -142,11 +150,10 @@ const Navigation = () => {
 					id='mobile-menu'
 					className={`${open ? "block" : "hidden"} lg:hidden`}>
 					<div className='space-y-1 pb-3 pt-2'>
-						{itemsMenu.map((menu, index) => (
+						{itemsMenu.map((menu) => (
 							<>
 								<NavLink
-									key={index}
-									to={menu.href}
+									to={menu.url}
 									className={({ isActive }) => {
 										return (
 											"block border-l-4 border-transparent text-base py-2 pl-3 pr-4" +
@@ -154,9 +161,7 @@ const Navigation = () => {
 												? "font-medium border-transparent "
 												: "border-transparent text-base font-medium text-gray-600 hover:border-purple-600 hover:bg-purple-50 hover:text-purple-600")
 										);
-									}}>
-									{menu.name}
-								</NavLink>
+									}}></NavLink>
 							</>
 						))}
 					</div>
@@ -178,8 +183,8 @@ const Navigation = () => {
 							{profileUser.map((menu, index) => (
 								<>
 									<NavLink
-										key={index}
-										to={menu.href}
+										key={index.id}
+										to={menu.url}
 										className='block px-4 py-2 text-base font-medium text-black hover:bg-purple-50 hover:text-purple-600'>
 										{menu.name}
 										<span className='text-2xl block float-left mr-2'>

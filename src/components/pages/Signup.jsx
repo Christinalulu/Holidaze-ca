@@ -2,7 +2,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { useFormik } from "formik";
 import { signUpSchema } from "../../schemas/signUpSchema";
 import { NavLink } from "react-router-dom";
-import { SIGNUP_URL } from "../../api/api";
+
 
 const onSubmit = async (values) => {
 	

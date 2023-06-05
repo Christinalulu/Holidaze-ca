@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { loginSchema } from "../../schemas/loginSchema";
 import { IoBedOutline } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
-import { LOGIN_URL } from "../../api/api";
+
 import { saveToken, saveUser } from "../../store/storage";
 
 
@@ -27,7 +27,7 @@ const userToSave = {
    email : data.email
 }
 saveUser(userToSave)
-location.href = '/home';
+location.href = '/';
 
 }
 

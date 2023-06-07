@@ -10,29 +10,21 @@ import { AiOutlineUser, AiOutlineSetting } from "react-icons/ai";
 const Navigation = () => {
 	const [open, setOpen] = useState(true);
 
-	const itemsMenu = [
+	const desktopMenu = [
 		{  name: "Home", href: "/" },
-		{  name: "Venues", href: "/venues" },
-		{  name: "Details", href: "/details/:id" },
+		{  name: "Products", href: "/products" },
+		{  name: "Dashboard", href: "/dashborad" },
+		{  name: "Checkout", href: "/checkout" },
+	];
+
+	const mobileMenu = [
+		{  name: "Home", href: "/" },
+		{  name: "Products", href: "/products" },
+
 		{  name: "Dashboard", href: "/dashborad" },
 		{  name: "Checkout", href: "/checkout" },
 	];
 	
-	// const desktopNavigation = itemsMenu.map((item) => (
-	// 	<ItemsMenu
-	// 		key={`desktop_${item.id}`}
-	// 		label={item.label}
-	// 		url={item.url}
-	// 	/>
-	// ));
-	// const mobileNavigation = itemsMenu.map((item) => (
-	// 	<ItemsMenu
-	// 		key={`mobile_${item.id}`}
-	// 		label={item.label}
-	// 		url={item.url}
-	// 	/>
-	// ));
-
 	const profileUser = [
 		{ name: "Your Profile", icon: <AiOutlineUser /> },
 		{ name: "Settings", icon: <AiOutlineSetting /> },
@@ -55,10 +47,10 @@ const Navigation = () => {
 							</NavLink>
 
 							<div className='hidden lg:ml-6 lg:flex lg:space-x-8'>
-								{itemsMenu.map((menu, index) => (
+								{desktopMenu.map((menu) => (
 									<>
 										<NavLink
-											key={index.id}
+											key={desktopMenu.id}
 											to={menu.href}
 											className={({ isActive }) => {
 												return (
@@ -150,10 +142,11 @@ const Navigation = () => {
 					id='mobile-menu'
 					className={`${open ? "block" : "hidden"} lg:hidden`}>
 					<div className='space-y-1 pb-3 pt-2'>
-						{itemsMenu.map((menu) => (
+						{mobileMenu.map((menu) => (
 							<>
 								<NavLink
-									to={menu.url}
+								key={mobileMenu.id}
+									to={menu.href}
 									className={({ isActive }) => {
 										return (
 											"block border-l-4 border-transparent text-base py-2 pl-3 pr-4" +
@@ -161,7 +154,9 @@ const Navigation = () => {
 												? "font-medium border-transparent "
 												: "border-transparent text-base font-medium text-gray-600 hover:border-purple-600 hover:bg-purple-50 hover:text-purple-600")
 										);
-									}}></NavLink>
+									}}>
+										{menu.name}
+									</NavLink>
 							</>
 						))}
 					</div>

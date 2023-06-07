@@ -1,14 +1,14 @@
 import { useFormik } from "formik";
 import { loginSchema } from "../../schemas/loginSchema";
 import { IoBedOutline } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import { saveToken, saveUser } from "../../store/storage";
 
 
 const onSubmit = async(values) => {
    console.log({values});
-   let respone = await fetch(LOGIN_URL,{
+   let respone = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/login",{
       method: "POST",
       headers:{
          "Content-Type": "application/json",
@@ -99,11 +99,9 @@ const Login = () => {
 							</div>
 						</div>
 						<div>
-							<button
-								type='submit'
-								className='flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+							<Link to="/products" type='submit' className='flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
 								Log in
-							</button>
+							</Link>
 						</div>
 					</form>
 					<p className='mt-10 text-center text-sm text-gray-500'>

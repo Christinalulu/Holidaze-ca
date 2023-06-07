@@ -1,29 +1,30 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "../components/pages/Home";
-import Venues from "../components/pages/Venues";
+import HomePage from "../components/pages/HomePage";
+import ProductsPage from "../components/pages/ProductsPage";
 import Details from "../components/pages/Details";
 import Dashboard from "../components/pages/Dashboard"
 import Signup from "../components/pages/Signup"
 import Login from "../components/pages/Login"
 import Checkout from "../components/pages/Checkout"
 
+
 function Router() {
 	return (
 		<>
 		
 				<Routes>
-					<Route
+					 <Route
 						path='/'
-						element={<Home />}
+						element={<HomePage />}
+					/> 
+				 <Route
+						path='/products'
+						element={<ProductsPage />}
 					/>
-					<Route
-						path='/venues'
-						element={<Venues />}
-					/>
-					<Route
-						path='/details/:id'
+				 <Route
+					 	path='/details/:id'
 						element={<Details />}
-					/>
+					 />
 					<Route
 						path='/dashborad'
 						element={<Dashboard />}
@@ -39,7 +40,7 @@ function Router() {
 					<Route
 						path='/checkout'
 						element={<Checkout/>}
-					/>
+					/> 
 				
 				</Routes>
 			

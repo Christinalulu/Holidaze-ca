@@ -7,13 +7,6 @@ import {AiOutlineReddit} from "react-icons/ai"
 
 const Footer = () => {
 
-	// const footerNav = [
-	// 	{ name: "Home", href: "/" },
-	// 	{ name: "Venues", href: "venues" },
-	// 	{ name: "Details", href: "/product/:id" },
-	// 	{ name: "Dashboard", href: "/dashboard" },
-	// ];
-
 	const iconsFooter = [
 		{icon: <BsTwitter/>},
 		{icon: <FaFacebookSquare/>},
@@ -30,7 +23,6 @@ const Footer = () => {
 						aria-label='Footer'>
 						<div className='pb-6'>
 							<NavLink
-								
 								className='text-sm leading-6 text-gray-600 hover:text-gray-900'>
 								About
 							</NavLink>

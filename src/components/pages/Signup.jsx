@@ -1,12 +1,12 @@
 import { IoBedOutline } from "react-icons/io5";
 import { useFormik } from "formik";
 import { signUpSchema } from "../../schemas/signUpSchema";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 
 const onSubmit = async (values) => {
 	
-	let response = await fetch(SIGNUP_URL, {
+	let response = await fetch("https://api.noroff.dev/api/v1/holidaze/auth/register", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -30,7 +30,7 @@ const Signup = () => {
 		validationSchema: signUpSchema,
 		onSubmit,
 	});
-	console.log(errors, "errors");
+	
 	return (
 		<div>
 			<div className='flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200'>
@@ -97,10 +97,12 @@ const Signup = () => {
 								</label>
 							</div>
 							<div className='mt-2'>
-								<input
+								<input 
 									value={values.password}
 									onChange={handleChange}
 									onBlur={handleBlur}
+									autoComplete="on"
+								
 									id='password'
 									name='password'
 									type='password'
@@ -124,6 +126,7 @@ const Signup = () => {
 									value={values.confirmPassword}
 									onChange={handleChange}
 									onBlur={handleBlur}
+									autoComplete="on"
 									id='confirmPassword'
 									name='confirmPassword'
 									type='password'
@@ -149,11 +152,9 @@ const Signup = () => {
 						</div>
 
 						<div>
-							<button
-								type='submit'
-								className='flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+							<Link to='/login' type='submit' className='flex w-full justify-center rounded-md bg-purple-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
 								Sign in
-							</button>
+							</Link>
 						</div>
 					</form>
 

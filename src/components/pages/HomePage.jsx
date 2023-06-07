@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const HomePage = () => {
    return (
       <div>
 			<div className='overflow-hidden bg-white py-32'>
@@ -16,7 +16,7 @@ const Home = () => {
 							</p>
 
 							<div className='mt-10 flex'>
-								<Link to="/venues"
+								<Link to="/products"
 									className='rounded-md bg-purple-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
 									Find your place <span aria-hidden='true'>&rarr;</span>
 								</Link>
@@ -26,7 +26,7 @@ const Home = () => {
 						<div className='flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents'>
 							<div className='w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end'>
 								<img
-									src='./images/image04.jpg'
+									src='./images/image01.jpg'
 									alt=''
 									className='aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover'
 								/>
@@ -74,4 +74,4 @@ const Home = () => {
    )
 }
 
-export default Home;
+export default HomePage;

@@ -1,17 +1,25 @@
-import { useSelector } from "react-redux";
-// import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+
 
 const Checkout = () => {
-	// const dispatch = useDispatch();
+
+
+	const {numberInCheckout} =useSelector((state) => state.checkout)
 	const {productsInCheckout} = useSelector((state) => state.checkout)
-	console.log("name",productsInCheckout.name);
+	const totalPrice = productsInCheckout.reduce(
+		(total, product) => total + product.price,
+		0
+	 );
+
 	return (
 		<>
 			<main className='lg:flex lg:min-h-full lg:flex-row-reverse lg:overflow-hidden'>
 				<h1 className='sr-only'>Checkout</h1>
 				<section
 					aria-labelledby='order-heading'
-					className='bg-gray-50 px-4 py-6 sm:px-6 lg:hidden'>
+					className='bg-gray-50 px-4 py-6 sm:px-6'>
+					
 					<div className='mx-auto max-w-lg'>
 						<div className='flex items-center justify-between'>
 							<h2
@@ -20,171 +28,49 @@ const Checkout = () => {
 								Your Order
 							</h2>
 						</div>
-
 						<div id='disclosure-1'>
-							<ul
-								role='list'
-								className='divide-y divide-gray-200 border-b border-gray-200'>
-								<li className='flex space-x-6 py-6'>
+						<ul  role='list' className='divide-y divide-gray-200 border-b border-gray-200'>
+						{productsInCheckout.map((product) => (
+								<li key={product.id} className='flex space-x-6 py-6'>
 									<img
-										src='https://tailwindui.com/img/ecommerce-images/checkout-form-04-product-01.jpg'
+										src={product.media[0]}
 										alt='Off-white t-shirt with circular dot illustration on the front of mountain ridges that fade.'
 										className='h-40 w-40 flex-none rounded-md bg-gray-200 object-cover object-center'
 									/>
 									<div className='flex flex-col justify-between space-y-4'>
 										<div className='space-y-1 text-sm font-medium'>
-											<h3 className='text-gray-900'>Mountain Mist Artwork Tee</h3>
-											<p className='text-gray-900'>$36.00</p>
-											<p className='text-gray-500'>Birch</p>
-											<p className='text-gray-500'>L</p>
+											<h3 className='text-gray-900'>{product.name} </h3>
+											<p className='text-gray-900'>{product.price} </p>
+											<p className='text-gray-500'>{product.maxguest} </p>
+											<p className='text-gray-500'>Rating {product.rating} </p>
 										</div>
 										<div className='flex space-x-4'>
-											<button
-												type='button'
-												className='text-sm font-medium text-indigo-600 hover:text-indigo-500'>
-												Edit
-											</button>
+										
 											<div className='flex border-l border-gray-300 pl-4'>
 												<button
 													type='button'
-													className='text-sm font-medium text-indigo-600 hover:text-indigo-500'>
+													className='text-sm font-medium text-purple-600 hover:text-purple-500'>
 													Remove
 												</button>
 											</div>
 										</div>
 									</div>
 								</li>
+									))}
 							</ul>
-
-							<form className='mt-10'>
-								<label
-									htmlFor='discount-code-mobile'
-									className='block text-sm font-medium text-gray-700'>
-									Discount code
-								</label>
-								<div className='mt-1 flex space-x-4'>
-									<input
-										type='text'
-										id='discount-code-mobile'
-										name='discount-code-mobile'
-										className='block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
-									/>
-									<button
-										type='submit'
-										className='rounded-md bg-gray-200 px-4 text-sm font-medium text-gray-600 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50'>
-										Apply
-									</button>
-								</div>
-							</form>
-
 							<div className='mt-10 space-y-6 text-sm font-medium text-gray-500'>
 								<div className='flex justify-between'>
-									<dt>Subtotal</dt>
-									<dd className='text-gray-900'>$108.00</dd>
-								</div>
-								<div className='flex justify-between'>
-									<dt className='flex'>
-										Discount
-										<span className='ml-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs tracking-wide text-gray-600'>
-											CHEAPSKATE
-										</span>
-									</dt>
-									<dd className='text-gray-900'>-$16.00</dd>
-								</div>
-								<div className='flex justify-between'>
-									<dt>Taxes</dt>
-									<dd className='text-gray-900'>$9.92</dd>
-								</div>
-								<div className='flex justify-between'>
-									<dt>Shipping</dt>
-									<dd className='text-gray-900'>$8.00</dd>
+									<dt>Amount</dt>
+									<dd className='text-gray-900'>{numberInCheckout} </dd>
 								</div>
 							</div>
 						</div>
-
 						<p className='mt-6 flex items-center justify-between border-t border-gray-200 pt-6 text-sm font-medium text-gray-900'>
 							<span className='text-base'>Total</span>
-							<span className='text-base'>$141.92</span>
+							<span className='text-base'>{totalPrice}</span>
 						</p>
 					</div>
 				</section>
-
-				<section
-					aria-labelledby='summary-heading'
-					className='hidden w-full max-w-md flex-col bg-gray-50 lg:flex'>
-					<h2
-						id='summary-heading'
-						className='sr-only'>
-						Order summary
-					</h2>
-
-					<ul
-						role='list'
-						className='flex-auto divide-y divide-gray-200 overflow-y-auto px-6'>
-						<li className='flex space-x-6 py-6'>
-							<img
-								src='https://tailwindui.com/img/ecommerce-images/checkout-form-04-product-01.jpg'
-								alt='Off-white t-shirt with circular dot illustration on the front of mountain ridges that fade.'
-								className='h-40 w-40 flex-none rounded-md bg-gray-200 object-cover object-center'
-							/>
-							<div className='flex flex-col justify-between space-y-4'>
-								<div className='space-y-1 text-sm font-medium'>
-									<h3 className='text-gray-900'>Mountain Mist Artwork Tee</h3>
-									<p className='text-gray-900'>$36.00</p>
-									<p className='text-gray-500'>Birch</p>
-									<p className='text-gray-500'>L</p>
-								</div>
-								<div className='flex space-x-4'>
-									<button
-										type='button'
-										className='text-sm font-medium text-indigo-600 hover:text-indigo-500'>
-										Edit
-									</button>
-									<div className='flex border-l border-gray-300 pl-4'>
-										<button
-											type='button'
-											className='text-sm font-medium text-indigo-600 hover:text-indigo-500'>
-											Remove
-										</button>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-
-					<div className='sticky bottom-0 flex-none border-t border-gray-200 bg-gray-50 p-6'>
-					
-
-						<dl className='mt-10 space-y-6 text-sm font-medium text-gray-500'>
-							<div className='flex justify-between'>
-								<dt>Subtotal</dt>
-								<dd className='text-gray-900'>$108.00</dd>
-							</div>
-							<div className='flex justify-between'>
-								<dt className='flex'>
-									Discount
-									<span className='ml-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs tracking-wide text-gray-600'>
-										CHEAPSKATE
-									</span>
-								</dt>
-								<dd className='text-gray-900'>-$16.00</dd>
-							</div>
-							<div className='flex justify-between'>
-								<dt>Taxes</dt>
-								<dd className='text-gray-900'>$9.92</dd>
-							</div>
-							<div className='flex justify-between'>
-								<dt>Shipping</dt>
-								<dd className='text-gray-900'>$8.00</dd>
-							</div>
-							<div className='flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900'>
-								<dt>Total</dt>
-								<dd className='text-base'>$141.92</dd>
-							</div>
-						</dl>
-					</div>
-				</section>
-
 				<section
 					aria-labelledby='payment-heading'
 					className='flex-auto overflow-y-auto px-4 pb-16 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pb-24 lg:pt-0'>
@@ -193,7 +79,6 @@ const Checkout = () => {
 						className='sr-only'>
 						Payment and shipping details
 					</h2>
-
 					<div className='mx-auto max-w-lg lg:pt-16'>
 						<h3 className='flex w-full items-center justify-center  text-purple-300 text-3xl '>
 							Checkout

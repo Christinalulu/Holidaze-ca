@@ -4,7 +4,9 @@ const checkoutSlice = createSlice({
    name: 'checkout',
    initialState: {
       productsInCheckout: [],
-      numberOfProduct: 0,
+      numberInCheckout: 0,
+      totalPrice: 0
+
    },
    reducers: {
       ADD_PRODUCT_TO_CHECKOUT: (state, action) => {
@@ -13,16 +15,22 @@ const checkoutSlice = createSlice({
          const isProductInCheckout = state.productsInCheckout.some(
             (product) => product.id === action.payload.id
          )
-         if(isProductInCheckout){
+         if(isProductInCheckout ){
          }else{
-            state.productsInCheckout = [...state.productsInCheckout, action.payload];
+            state.productsInCheckout = [...state.productsInCheckout, action.payload]
+            state.numberInCheckout = state.productsInCheckout.length;
+            state.totalPrice = state.productsInCheckout.length
          }
+        
       }
+
    }
+
 })
-export default checkoutSlice.reducer;
+export default checkoutSlice.reducer
 
 const {ADD_PRODUCT_TO_CHECKOUT} = checkoutSlice.actions;
-export const addSingleProductToCheckout = (checkoutData) => (dispatch) =>{
-   dispatch(ADD_PRODUCT_TO_CHECKOUT(checkoutData));
+export const addSingleProductToCheckout = (productData) => (dispatch) => {
+   dispatch(ADD_PRODUCT_TO_CHECKOUT(productData))
 }
+

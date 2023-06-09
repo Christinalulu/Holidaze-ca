@@ -41,6 +41,7 @@ function Router() {
 						path='/checkout'
 						element={<Checkout/>}
 					/> 
+					
 				
 				</Routes>
 			

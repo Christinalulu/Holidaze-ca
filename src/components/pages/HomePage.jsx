@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+
    return (
-      <div>
+		
+	 
+		<div>
 			<div className='overflow-hidden bg-white py-32'>
 				<div className='mx-auto max-w-7xl px-6 lg:flex lg:px-8'>
 					<div className='mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8'>
@@ -52,12 +55,12 @@ const HomePage = () => {
 				</div>
 			</div>
 
-			<div className='bg-gradient-to-r from-white via-purple-200 to-pink-200 shadow py-24 sm:py-32'>
-				<div className='mx-auto max-w-7xl px-6 lg:px-8'>
+			<div className='bg-gradient-to-r from-white via-purple-200 to-pink-200 shadow py-24 sm:py-32 flex items-center justify-center'>
+				<div className='mx-auto max-w-4xl px-6 lg:px-8'>
 					<div className='mx-auto max-w-2xl lg:mx-0'>
-						<a className='text-base font-semibold leading-7 text-purple-600 hover:underline'>
+						<Link to="/signup" className='text-base font-semibold leading-7 text-purple-600 hover:underline'>
 						Click here
-						</a>
+						</Link>
 						<h2 className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
 						Join our community
 						</h2>
@@ -70,7 +73,10 @@ const HomePage = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> 
+		
+		
+     
    )
 }
 

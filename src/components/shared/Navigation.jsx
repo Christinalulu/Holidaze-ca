@@ -20,7 +20,6 @@ const Navigation = () => {
 	const mobileMenu = [
 		{  name: "Home", href: "/" },
 		{  name: "Products", href: "/products" },
-
 		{  name: "Dashboard", href: "/dashborad" },
 		{  name: "Checkout", href: "/checkout" },
 	];
@@ -50,7 +49,7 @@ const Navigation = () => {
 								{desktopMenu.map((menu) => (
 									<>
 										<NavLink
-											key={desktopMenu.id}
+											key={`desktop_${menu.id}`}
 											to={menu.href}
 											className={({ isActive }) => {
 												return (
@@ -145,7 +144,7 @@ const Navigation = () => {
 						{mobileMenu.map((menu) => (
 							<>
 								<NavLink
-								key={mobileMenu.id}
+								key={`mobile_${menu.id}`}
 									to={menu.href}
 									className={({ isActive }) => {
 										return (
@@ -175,10 +174,10 @@ const Navigation = () => {
 							</div>
 						</div>
 						<div className='mt-3 space-y-1'>
-							{profileUser.map((menu, index) => (
+							{profileUser.map((menu) => (
 								<>
 									<NavLink
-										key={index.id}
+										key={`profile_${menu.id}`}
 										to={menu.url}
 										className='block px-4 py-2 text-base font-medium text-black hover:bg-purple-50 hover:text-purple-600'>
 										{menu.name}

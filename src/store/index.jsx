@@ -1,15 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
 import theVenueSlice from "./modules/theVenueSlice";
-import userSlice from "./modules/userSlice";
-import checkoutSlice from './modules/checkoutSlice';
+import checkoutSlice from "./modules/checkoutSlice";
+import loaderSlice from "./modules/loaderSlice";
 
 
 const reducer = combineReducers({
    theVenueSlice,
-   userSlice,
-   checkoutSlice
-
+   loader: loaderSlice,
+   checkout: checkoutSlice,
  
 
 });
